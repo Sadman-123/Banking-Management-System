@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
+import 'package:untitled2/controller/bank_controller.dart';
+import 'package:get/get.dart';
 class Deposit extends StatelessWidget {
-
+BankController bank=Get.find();
   @override
   Widget build(BuildContext context) {
     var mdw = MediaQuery.of(context).size.width;
@@ -29,6 +30,7 @@ class Deposit extends StatelessWidget {
             Container(
               width: mdw * 0.8,
               child: TextField(
+                controller: bank.depositcontroller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelStyle: TextStyle(fontWeight: FontWeight.bold),
