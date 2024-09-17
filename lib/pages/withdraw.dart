@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:untitled2/controller/bank_controller.dart';
 class Withdraw extends StatelessWidget{
+  BankController bank=Get.find();
   @override
   Widget build(BuildContext context) {
     var mdw = MediaQuery.of(context).size.width;
@@ -26,6 +29,7 @@ class Withdraw extends StatelessWidget{
             Container(
               width: mdw * 0.8,
               child: TextField(
+                controller: bank.withdrawcontroller,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelStyle: TextStyle(fontWeight: FontWeight.bold),
@@ -39,6 +43,7 @@ class Withdraw extends StatelessWidget{
             SizedBox(height: mdh * 0.015),
             ElevatedButton(
               onPressed: () {
+                bank.withdraw_to_trans();
               },
               child: Text("Deposit Money"),
               style: ButtonStyle(
