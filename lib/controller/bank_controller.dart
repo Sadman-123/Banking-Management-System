@@ -10,6 +10,7 @@ class BankController extends GetxController{
   RxList<dynamic>trans=[].obs;
   RxList<dynamic>sums=[].obs;
   RxString l1="0".obs;
+  RxString l2="0".obs;
   RxString sum="".obs;
   String getCurrentTimeAndDate() {
     DateTime now = DateTime.now();
@@ -53,6 +54,7 @@ class BankController extends GetxController{
     var res=await http.post(url,headers: {'Content-Type': 'application/json; charset=UTF-8',},body: json.encode(dat));
     if(res.statusCode==200)
     {
+      l2.value=withdrawcontroller.text;
       Get.snackbar("Success", "Withdraw Successfully");
       withdrawcontroller.clear();
     }

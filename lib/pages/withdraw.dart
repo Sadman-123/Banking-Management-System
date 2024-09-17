@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled2/controller/bank_controller.dart';
+import 'package:untitled2/main.dart';
 class Withdraw extends StatelessWidget{
   BankController bank=Get.find();
   @override
@@ -10,6 +11,10 @@ class Withdraw extends StatelessWidget{
     return  Scaffold(
       appBar: AppBar(
         title: Text("Withdraw"),
+        leading: IconButton(onPressed: (){
+          bank.l2.value="0";
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => App(),));
+        }, icon: Icon(Icons.arrow_back)),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -22,10 +27,10 @@ class Withdraw extends StatelessWidget{
       body: Center(
         child: Column(
           children: [
-            Text(
-              "0৳", // Use .value for reactive variables
+            Obx(()=>Text(
+              "${bank.l2.value}৳", // Use .value for reactive variables
               style: TextStyle(fontSize: mdw * 0.185, fontWeight: FontWeight.w900),
-            ),
+            ),),
             Container(
               width: mdw * 0.8,
               child: TextField(
