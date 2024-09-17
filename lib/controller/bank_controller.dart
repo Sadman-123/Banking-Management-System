@@ -7,10 +7,16 @@ class BankController extends GetxController{
   TextEditingController usercontroller=TextEditingController();
   TextEditingController depositcontroller=TextEditingController();
   TextEditingController withdrawcontroller=TextEditingController();
+  RxList<dynamic>trans=[].obs;
   String getCurrentTimeAndDate() {
     DateTime now = DateTime.now();
     String formattedTimeDate = DateFormat('hh:mm a dd/MM/yyyy').format(now);
     return formattedTimeDate;
+  }
+  @override
+  void onInit() {
+    super.onInit();
+    getTrans();
   }
   Future<void> depo_to_trans()
   async{
@@ -49,5 +55,17 @@ class BankController extends GetxController{
       withdrawcontroller.clear();
     }
 
+  }
+  Future<void>getTrans()
+  async{
+    var url=Uri.parse("https://banking-management-api.vercel.app/api/${usercontroller.text}");
+    var res=await http.get(url);
+    if(res.statusCode==200)
+      {
+        trans.assignAll(jsonDecode(res.body));
+      }
+    else{
+      print("Error");
+    }
   }
 }

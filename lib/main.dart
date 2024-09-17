@@ -28,6 +28,7 @@ class Main extends StatelessWidget {
   }
 }
 class App extends StatelessWidget {
+  BankController bank=Get.find();
   @override
   Widget build(BuildContext context) {
     var mdw = MediaQuery.of(context).size.width;
@@ -113,16 +114,20 @@ class App extends StatelessWidget {
             SizedBox(height: mdh*0.018,),
             Expanded(
               child: Container(
-                child:ListView.separated(
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text("Hello"),
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return Divider();
-                    },
-                    itemCount: 3)
+                child:Obx((){
+                  return ListView.separated(
+                      reverse: true,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          title: Obx(()=>Text("${bank.trans[index]['time']}",style: TextStyle(fontSize: mdw*0.046),),),
+                          trailing: Obx(()=>bank.trans[index]['add']?Text("+${bank.trans[index]['money_transfer']}",style: TextStyle(fontSize: mdw*0.058,color: Colors.green),):Text("-${bank.trans[index]['money_transfer']}",style: TextStyle(fontSize: mdw*0.058,color: Colors.red),)),
+                        );
+                      },
+                      separatorBuilder: (context, index) {
+                        return Divider();
+                      },
+                      itemCount: bank.trans.length);
+                })
               ),
             )
           ],

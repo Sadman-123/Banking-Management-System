@@ -61,6 +61,7 @@ class Splash extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => App(),));
+                        bank.getTrans();
                       },
                       child: Text("LOGIN"),
                       style: ButtonStyle(
