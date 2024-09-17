@@ -54,7 +54,7 @@ class App extends StatelessWidget {
               child: Obx(()=>Text(
                 "${bank.sum}৳",
                 style: TextStyle(
-                    fontSize: mdw * 0.185, fontWeight: FontWeight.w900),
+                    fontSize: mdw * 0.155, fontWeight: FontWeight.w900),
               ),)
             ),
             Container(

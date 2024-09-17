@@ -28,8 +28,8 @@ class Withdraw extends StatelessWidget{
         child: Column(
           children: [
             Obx(()=>Text(
-              "${bank.l2.value}৳", // Use .value for reactive variables
-              style: TextStyle(fontSize: mdw * 0.185, fontWeight: FontWeight.w900),
+              "${bank.l2.value}৳",
+              style: TextStyle(fontSize: mdw * 0.155, fontWeight: FontWeight.w900),
             ),),
             Container(
               width: mdw * 0.8,

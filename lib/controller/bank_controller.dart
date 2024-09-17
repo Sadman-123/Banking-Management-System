@@ -35,7 +35,7 @@ class BankController extends GetxController{
       var res=await http.post(url,headers: {'Content-Type': 'application/json; charset=UTF-8',},body: json.encode(dat));
       if(res.statusCode==200)
       {
-        l1.value=depositcontroller.text;
+        l1.value="+${depositcontroller.text}";
         depositcontroller.clear();
         Get.snackbar("Success", "Deposit Successfully");
       }
@@ -54,7 +54,7 @@ class BankController extends GetxController{
     var res=await http.post(url,headers: {'Content-Type': 'application/json; charset=UTF-8',},body: json.encode(dat));
     if(res.statusCode==200)
     {
-      l2.value=withdrawcontroller.text;
+      l2.value="-${withdrawcontroller.text}";
       Get.snackbar("Success", "Withdraw Successfully");
       withdrawcontroller.clear();
     }
