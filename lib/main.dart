@@ -16,7 +16,7 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     var mdw = MediaQuery.of(context).size.width;
     var mdh = MediaQuery.of(context).size.height;
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           titleTextStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: mdw * 0.088,color: Colors.black),
@@ -51,11 +51,12 @@ class App extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              child: Text(
-                "0৳",
+              child: Obx(()=>Text(
+                "${bank.sum}৳",
                 style: TextStyle(
                     fontSize: mdw * 0.185, fontWeight: FontWeight.w900),
-              ),),
+              ),)
+            ),
             Container(
               child: ElevatedButton(
                   style: ButtonStyle(
@@ -116,7 +117,6 @@ class App extends StatelessWidget {
               child: Container(
                 child:Obx((){
                   return ListView.separated(
-                      reverse: true,
                       itemBuilder: (context, index) {
                         return ListTile(
                           title: Obx(()=>Text("${bank.trans[index]['time']}",style: TextStyle(fontSize: mdw*0.046),),),

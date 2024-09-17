@@ -62,6 +62,7 @@ class Splash extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => App(),));
                         bank.getTrans();
+                        bank.getSum();
                       },
                       child: Text("LOGIN"),
                       style: ButtonStyle(
