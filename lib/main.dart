@@ -92,7 +92,7 @@ class App extends StatelessWidget {
                                   width: mdw * 0.12,
                                 ),
                                 onTap: (){
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Withdraw(),));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => Withdraw(),));
                                 },
                               )
                             ],

@@ -9,6 +9,7 @@ class BankController extends GetxController{
   TextEditingController withdrawcontroller=TextEditingController();
   RxList<dynamic>trans=[].obs;
   RxList<dynamic>sums=[].obs;
+  RxString l1="0".obs;
   RxString sum="".obs;
   String getCurrentTimeAndDate() {
     DateTime now = DateTime.now();
@@ -33,8 +34,9 @@ class BankController extends GetxController{
       var res=await http.post(url,headers: {'Content-Type': 'application/json; charset=UTF-8',},body: json.encode(dat));
       if(res.statusCode==200)
       {
-        Get.snackbar("Success", "Deposit Successfully");
+        l1.value=depositcontroller.text;
         depositcontroller.clear();
+        Get.snackbar("Success", "Deposit Successfully");
       }
       getTrans();
       getSum();
@@ -82,5 +84,11 @@ class BankController extends GetxController{
     } else {
       print("Error");
     }
+  }
+  @override
+  void onClose() {
+    // TODO: implement onClose
+    super.onClose();
+    l1.value="";
   }
 }

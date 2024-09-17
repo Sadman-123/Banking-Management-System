@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/controller/bank_controller.dart';
 import 'package:get/get.dart';
+import 'package:untitled2/main.dart';
 class Deposit extends StatelessWidget {
 BankController bank=Get.find();
   @override
@@ -9,6 +10,11 @@ BankController bank=Get.find();
     var mdh = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
+        leading: IconButton(onPressed: (){
+          bank.l1.value="0";
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => App(),));
+        }, icon: Icon(Icons.arrow_back)),
         title: Text("Deposit"),
         actions: [
           Padding(
@@ -22,11 +28,11 @@ BankController bank=Get.find();
       body: Center(
         child: Column(
           children: [
-            Text(
-              "0৳",
+            Obx(()=>Text(
+              "${bank.l1}৳",
               style: TextStyle(
                   fontSize: mdw * 0.185, fontWeight: FontWeight.w900),
-            ),
+            ),),
             Container(
               width: mdw * 0.8,
               child: TextField(
@@ -45,6 +51,7 @@ BankController bank=Get.find();
             ElevatedButton(
               onPressed: () {
                 bank.depo_to_trans();
+                bank.l1.value="";
               },
               child: Text("Deposit Money"),
               style: ButtonStyle(
