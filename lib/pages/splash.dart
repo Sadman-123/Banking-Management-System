@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:untitled2/main.dart';
+import 'package:get/get.dart';
+import 'package:untitled2/controller/bank_controller.dart';
 class Splash extends StatelessWidget {
+  BankController bank=Get.find();
   @override
   Widget build(BuildContext context) {
     var mdw = MediaQuery.of(context).size.width;
@@ -47,6 +50,7 @@ class Splash extends StatelessWidget {
                     Container(
                       width: mdw * 0.7,
                       child: TextField(
+                        controller: bank.usercontroller,
                         decoration: InputDecoration(
                           hintText: "User Name",
                           border: OutlineInputBorder(),
