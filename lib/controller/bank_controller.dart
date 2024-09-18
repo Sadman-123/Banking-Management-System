@@ -37,7 +37,16 @@ class BankController extends GetxController{
       {
         l1.value="+${depositcontroller.text}";
         depositcontroller.clear();
-        Get.snackbar("Success", "Deposit Successfully");
+        Get.snackbar(
+            "Success",
+            "Deposit Successfully",
+          icon: Image.asset("assets/donation.png",height: 40,),
+          backgroundColor: Color(0xFF8FD14F),
+          barBlur: 0.1,
+          isDismissible: true,
+          colorText: Colors.white,
+            dismissDirection: DismissDirection.horizontal
+        );
       }
       getTrans();
       getSum();
@@ -55,7 +64,15 @@ class BankController extends GetxController{
     if(res.statusCode==200)
     {
       l2.value="-${withdrawcontroller.text}";
-      Get.snackbar("Success", "Withdraw Successfully");
+      Get.snackbar(
+          "Success",
+          "Withdraw Successfully",
+        barBlur: 0.1,
+          icon: Image.asset("assets/money-withdrawal.png",height: 40,),
+        colorText: Colors.white,
+        backgroundColor: Color(0xFFEB4559),
+        dismissDirection: DismissDirection.horizontal
+      );
       withdrawcontroller.clear();
     }
     getTrans();

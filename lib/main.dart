@@ -36,13 +36,32 @@ class App extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text(
-          "City Bank",),
+        title: RichText(
+          text: TextSpan(
+            style: TextStyle(
+                color: Colors.black,
+              fontSize: mdw*0.055
+            ),
+            children: [
+              TextSpan(text: "Welcome"),
+              TextSpan(text: " ${bank.usercontroller.text}",style: TextStyle(fontWeight: FontWeight.bold)),
+              TextSpan(text: "👋")
+            ]
+          ),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: CircleAvatar(
-              backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
+            child: GestureDetector(
+              onTap: (){
+                bank.usercontroller.text ="";
+                bank.trans.clear();
+                bank.sum.value="0";
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Splash(),));
+              },
+              child: CircleAvatar(
+                backgroundImage: NetworkImage("https://i.pravatar.cc/300"),
+              ),
             ),
           )
         ],
@@ -119,6 +138,7 @@ class App extends StatelessWidget {
                   return ListView.separated(
                       itemBuilder: (context, index) {
                         return ListTile(
+                          leading: Obx(()=>bank.trans[index]['add']?Image.asset("assets/donation.png",color: Colors.green,height: mdh*0.06,):Image.asset("assets/money-withdrawal.png",color: Colors.red,height: mdh*0.06,)),
                           title: Obx(()=>Text("${bank.trans[index]['time']}",style: TextStyle(fontSize: mdw*0.046),),),
                           trailing: Obx(()=>bank.trans[index]['add']?Text("+${bank.trans[index]['money_transfer']}",style: TextStyle(fontSize: mdw*0.058,color: Colors.green),):Text("-${bank.trans[index]['money_transfer']}",style: TextStyle(fontSize: mdw*0.058,color: Colors.red),)),
                         );

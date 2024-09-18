@@ -31,7 +31,7 @@ BankController bank=Get.find();
             Obx(()=>Text(
               "${bank.l1}৳",
               style: TextStyle(
-                  fontSize: mdw * 0.155, fontWeight: FontWeight.w900),
+                  fontSize: mdw * 0.155, fontWeight: FontWeight.w900,color: Colors.green),
             ),),
             Container(
               width: mdw * 0.8,

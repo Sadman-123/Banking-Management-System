@@ -29,7 +29,7 @@ class Withdraw extends StatelessWidget{
           children: [
             Obx(()=>Text(
               "${bank.l2.value}৳",
-              style: TextStyle(fontSize: mdw * 0.155, fontWeight: FontWeight.w900),
+              style: TextStyle(fontSize: mdw * 0.155, fontWeight: FontWeight.w900,color: Colors.red),
             ),),
             Container(
               width: mdw * 0.8,

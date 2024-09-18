@@ -9,7 +9,9 @@ class Splash extends StatelessWidget {
     var mdw = MediaQuery.of(context).size.width;
     var mdh = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Color(0xFF7C93C3),
       appBar: AppBar(
+        backgroundColor: Color(0xFF7C93C3),
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
@@ -30,13 +32,14 @@ class Splash extends StatelessWidget {
                       style: TextStyle(
                         fontSize: mdw * 0.13,
                         fontWeight: FontWeight.bold,
+                        color: Color(0xFF181C14),
                       ),
                     ),
                     Text(
                       "Your Trust, Our Commitment.",
                       style: TextStyle(
                         fontSize: mdw * 0.063,
-                        color: Colors.black38,
+                        color: Color(0xFF181C14),
                       ),
                     ),
                   ],
@@ -50,10 +53,22 @@ class Splash extends StatelessWidget {
                     Container(
                       width: mdw * 0.7,
                       child: TextField(
+                        style: TextStyle(
+                          fontSize: mdw*0.05,
+                          fontWeight: FontWeight.bold
+                        ),
                         controller: bank.usercontroller,
                         decoration: InputDecoration(
+                          hintStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: mdw*0.05
+                          ),
+                          filled: true,
                           hintText: "User Name",
-                          border: OutlineInputBorder(),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(44)
+                          ),
                         ),
                       ),
                     ),
