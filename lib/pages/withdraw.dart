@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled2/controller/bank_controller.dart';
 import 'package:untitled2/main.dart';
+import 'package:untitled2/pages/app.dart';
 class Withdraw extends StatelessWidget{
   BankController bank=Get.find();
   @override
@@ -13,7 +14,7 @@ class Withdraw extends StatelessWidget{
         title: Text("Withdraw"),
         leading: IconButton(onPressed: (){
           bank.l2.value="0";
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => App(),));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>App(),));
         }, icon: Icon(Icons.arrow_back)),
         actions: [
           Padding(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:untitled2/controller/bank_controller.dart';
 import 'package:get/get.dart';
 import 'package:untitled2/main.dart';
+import 'package:untitled2/pages/app.dart';
 class Deposit extends StatelessWidget {
 BankController bank=Get.find();
   @override
