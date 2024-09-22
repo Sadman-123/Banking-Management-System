@@ -50,7 +50,6 @@ BankController bank=Get.find();
             SizedBox(height: mdh * 0.015),
             ElevatedButton(
               onPressed: () {
-                bank.depo_to_trans();
                 bank.l1.value="";
               },
               child: Text("Deposit Money"),

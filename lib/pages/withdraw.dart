@@ -48,7 +48,6 @@ class Withdraw extends StatelessWidget{
             SizedBox(height: mdh * 0.015),
             ElevatedButton(
               onPressed: () {
-                bank.withdraw_to_trans();
               },
               child: Text("Deposit Money"),
               style: ButtonStyle(

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:untitled2/controller/bank_controller.dart';
 import 'package:untitled2/pages/deposit.dart';
 import 'package:untitled2/pages/splash.dart';
+import 'package:untitled2/pages/splash2.dart';
 import 'package:untitled2/pages/withdraw.dart';
 void main() {
   Get.put(BankController());
@@ -44,7 +45,7 @@ class App extends StatelessWidget {
             ),
             children: [
               TextSpan(text: "Welcome"),
-              TextSpan(text: " ${bank.usercontroller.text}",style: TextStyle(fontWeight: FontWeight.bold)),
+              TextSpan(text: " Name",style: TextStyle(fontWeight: FontWeight.bold)),
               TextSpan(text: "👋")
             ]
           ),
@@ -54,7 +55,6 @@ class App extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: (){
-                bank.usercontroller.text ="";
                 bank.trans.clear();
                 bank.sum.value="0";
                 Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Splash(),));

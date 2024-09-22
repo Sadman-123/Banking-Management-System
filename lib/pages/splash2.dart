@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:untitled2/main.dart';
 import 'package:get/get.dart';
 import 'package:untitled2/controller/bank_controller.dart';
-import 'package:untitled2/pages/splash2.dart';
-class Splash extends StatelessWidget {
+import 'package:untitled2/pages/splash.dart';
+class Splash2 extends StatelessWidget {
   BankController bank=Get.find();
   @override
   Widget build(BuildContext context) {
@@ -55,20 +55,20 @@ class Splash extends StatelessWidget {
                       width: mdw * 0.7,
                       child: TextField(
                         style: TextStyle(
-                          fontSize: mdw*0.05,
-                          fontWeight: FontWeight.bold
+                            fontSize: mdw*0.05,
+                            fontWeight: FontWeight.bold
                         ),
-                        controller: bank.loginusername,
+                        controller: bank.registerusername,
                         decoration: InputDecoration(
                           hintStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: mdw*0.05
+                              fontWeight: FontWeight.bold,
+                              fontSize: mdw*0.05
                           ),
                           filled: true,
-                          hintText: "User Name",
+                          hintText: "New User Name",
                           border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(44)
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(44)
                           ),
                         ),
                       ),
@@ -81,14 +81,14 @@ class Splash extends StatelessWidget {
                             fontSize: mdw*0.05,
                             fontWeight: FontWeight.bold
                         ),
-                        controller: bank.loginpass,
+                        controller: bank.registerpass,
                         decoration: InputDecoration(
                           hintStyle: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: mdw*0.05
                           ),
                           filled: true,
-                          hintText: "Password",
+                          hintText: "New Password",
                           border: OutlineInputBorder(
                               borderSide: BorderSide.none,
                               borderRadius: BorderRadius.circular(44)
@@ -99,9 +99,9 @@ class Splash extends StatelessWidget {
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: () {
-                        bank.LOGIN();
+                       bank.REGISTER();
                       },
-                      child: Text("LOGIN"),
+                      child: Text("REGISTRATION"),
                       style: ButtonStyle(
                         backgroundColor:
                         MaterialStateProperty.all(Colors.blue),
@@ -111,14 +111,15 @@ class Splash extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     GestureDetector(
-                      onTap: (){Get.to(Splash2(),transition: Transition.cupertino);},
+                      onTap: (){Get.to(Splash(),transition: Transition.cupertino);},
                       child: RichText(text: TextSpan(
-                        style: TextStyle(fontSize: mdw*0.043),
-                        children: [
-                          TextSpan(text: "Dont have account? ",style: TextStyle(color: Colors.black)),
-                          TextSpan(text: "Create account",style: TextStyle(color: Colors.amber,fontWeight: FontWeight.bold))
-                        ]
-                      ),),
+                          style: TextStyle(fontSize: mdw*0.043),
+                          children: [
+                            TextSpan(text: "Already have account? ",style: TextStyle(color: Colors.black)),
+                            TextSpan(text: "Login Now",style: TextStyle(color: Colors.amber,fontWeight: FontWeight.bold))
+                          ]
+                      ),
+                      ),
                     )
                   ],
                 ),
