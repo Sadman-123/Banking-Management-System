@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:untitled2/controller/bank_controller.dart';
-import 'package:untitled2/main.dart';
 import 'package:untitled2/pages/app.dart';
 class Withdraw extends StatelessWidget{
   BankController bank=Get.find();
@@ -49,6 +48,8 @@ class Withdraw extends StatelessWidget{
             SizedBox(height: mdh * 0.015),
             ElevatedButton(
               onPressed: () {
+                bank.l2.value="";
+                bank.WITHDRAW();
               },
               child: Text("Deposit Money"),
               style: ButtonStyle(

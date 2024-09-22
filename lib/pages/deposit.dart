@@ -52,6 +52,7 @@ BankController bank=Get.find();
             ElevatedButton(
               onPressed: () {
                 bank.l1.value="";
+                bank.DEPOSIT();
               },
               child: Text("Deposit Money"),
               style: ButtonStyle(

@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:untitled2/pages/app.dart';
 class BankController extends GetxController{
   TextEditingController loginusername=TextEditingController();
   TextEditingController loginpass=TextEditingController();
@@ -63,10 +65,49 @@ class BankController extends GetxController{
       {
         Get.snackbar("Successs", "Login Successful");
         token=data['token'];
+        Get.to(App());
         _delete_fields();
       }
     else{
       Get.snackbar("Warning", "Login Unsuccessful");
+      _delete_fields();
+    }
+  }
+  Future<void> DEPOSIT()
+  async{
+    var dat={
+      "time": getCurrentTimeAndDate(),
+      "add": true,
+      "money_transfer": depositcontroller.text,
+    };
+    var url=Uri.parse("https://banking-management-api.vercel.app/insert");
+    var res=await http.post(url,headers:{
+      'Content-Type':'application/json',
+      'Authorization':'Bearer $token'
+    },body: json.encode(dat));
+    if(res.statusCode==200)
+      {
+        Get.snackbar("Success", "Added Successfully");
+        l1.value=depositcontroller.text;
+        _delete_fields();
+      }
+  }
+  Future<void> WITHDRAW()
+  async{
+    var dat={
+      "time": getCurrentTimeAndDate(),
+      "add": false,
+      "money_transfer": withdrawcontroller.text,
+    };
+    var url=Uri.parse("https://banking-management-api.vercel.app/insert");
+    var res=await http.post(url,headers:{
+      'Content-Type':'application/json',
+      'Authorization':'Bearer $token'
+    },body: json.encode(dat));
+    if(res.statusCode==200)
+    {
+      Get.snackbar("Success", "Withdraw Successfully");
+      l2.value=withdrawcontroller.text;
       _delete_fields();
     }
   }
